@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D&amp;D Dice Roller</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body onload="rollDice()">
+  <main class="card">
+    <div class="header">
+      <span class="die-icon" aria-hidden="true">&#9861;</span>
+      <h1>D&amp;D Dice Roller</h1>
+    </div>
+
+    <section class="instructions">
+      <h2>Instructions</h2>
+      <p>
+        Pick a die type (d4 through d100) and how many dice to roll
+        (up to 6), then press <strong>Roll Dice</strong> &mdash; or just
+        press Enter &mdash; to generate random results for your tabletop
+        game.
+      </p>
+    </section>
+
+    <section class="controls">
+      <div class="control-field">
+        <label for="dieType">Die Type</label>
+        <select id="dieType" onchange="rollDice()">
+          <option value="4">d4</option>
+          <option value="6">d6</option>
+          <option value="8">d8</option>
+          <option value="10">d10</option>
+          <option value="12">d12</option>
+          <option value="20" selected>d20</option>
+          <option value="100">d100</option>
+        </select>
+      </div>
+      <div class="control-field">
+        <label for="diceCount">Number of Dice</label>
+        <select id="diceCount" onchange="rollDice()">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="dice-panel" id="dicePanel"></section>
+
+    <section class="roll-info">
+      <label for="rollTotal">Total</label>
+      <input type="text" id="rollTotal" class="die-value" readonly />
+    </section>
+
+    <button id="rollButton" type="button" autofocus onclick="rollDice()">
+      Roll Dice
+    </button>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

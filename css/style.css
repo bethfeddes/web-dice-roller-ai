@@ -1,0 +1,229 @@
+:root {
+  --bg-start: #10091c;
+  --bg-end: #2b1533;
+  --card-bg: #f6ecd9;
+  --card-border: #c9a227;
+  --accent: #8b1e3f;
+  --accent-dark: #6b1530;
+  --gold: #c9a227;
+  --text-dark: #2a1e12;
+  --text-muted: #6b5a3f;
+  --field-bg: #fffaf0;
+  --field-border: #d9c48f;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  background: radial-gradient(circle at top, var(--bg-end), var(--bg-start));
+  color: var(--text-dark);
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.5), inset 0 0 0 6px rgba(255, 255, 255, 0.35);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.die-icon {
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 1.9rem;
+  letter-spacing: 0.5px;
+  color: var(--accent-dark);
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+}
+
+.instructions {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 22px;
+}
+
+.instructions p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.control-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-field label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.control-field select {
+  padding: 10px 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  border-radius: 10px;
+  border: 2px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.control-field select:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.dice-panel {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.die-field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  animation: pop-in 0.25s ease;
+}
+
+.die-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.die-value {
+  width: 100%;
+  padding: 10px 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: right;
+  border-radius: 10px;
+  border: 2px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--accent-dark);
+}
+
+.die-value:focus {
+  outline: none;
+}
+
+.roll-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, var(--gold), #e4c766);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+
+.roll-info label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.roll-info .die-value {
+  max-width: 100px;
+  font-size: 1.1rem;
+  border-color: var(--accent-dark);
+}
+
+button#rollButton {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+button#rollButton:hover {
+  background: var(--accent-dark);
+}
+
+button#rollButton:active {
+  transform: scale(0.98);
+}
+
+button#rollButton:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .dice-panel {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
